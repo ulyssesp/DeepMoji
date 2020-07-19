@@ -8,7 +8,8 @@ if [[ ! -f "$WEIGHTS" ]]; then
   python scripts/download_weights.py
 fi
 
+cd tests
 nosetests -v
 
-cd examples
+cd ../examples
 py ./finetune_semeval_class-avg_f1.py
