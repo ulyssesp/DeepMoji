@@ -1,4 +1,5 @@
-pip install tensorflow
+# already have tensorflow
+#pip install tensorflow
 
 pip install -e .
 
