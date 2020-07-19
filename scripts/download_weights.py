@@ -49,21 +49,20 @@ if download:
     else:
         os.unlink(weights_path)
 
-    if already_exists or prompt():
-        print('Downloading...')
+    print('Downloading...')
 
-        # urllib.urlretrieve(weights_download_link, weights_path)
-        # with open(weights_path,'wb') as f:
-        #     f.write(requests.get(weights_download_link).content)
+    # urllib.urlretrieve(weights_download_link, weights_path)
+    # with open(weights_path,'wb') as f:
+    #     f.write(requests.get(weights_download_link).content)
 
-        # downloading using wget due to issues with urlretrieve and requests
-        sys_call = 'wget {} -O {}'.format(weights_download_link, os.path.abspath(weights_path))
-        print("Running system call: {}".format(sys_call))
-        call(sys_call, shell=True)
+    # downloading using wget due to issues with urlretrieve and requests
+    sys_call = 'wget {} -O {}'.format(weights_download_link, os.path.abspath(weights_path))
+    print("Running system call: {}".format(sys_call))
+    call(sys_call, shell=True)
 
-        if os.path.getsize(weights_path) / MB_FACTOR < 80:
-            raise ValueError("Download finished, but the resulting file is too small! " +
-                             "It\'s only {} bytes.".format(os.path.getsize(weights_path)))
-        print('Downloaded weights to {}'.format(weights_path))
+    if os.path.getsize(weights_path) / MB_FACTOR < 80:
+        raise ValueError("Download finished, but the resulting file is too small! " +
+                         "It\'s only {} bytes.".format(os.path.getsize(weights_path)))
+    print('Downloaded weights to {}'.format(weights_path))
 else:
     print('Exiting.')
