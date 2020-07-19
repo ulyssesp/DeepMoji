@@ -9,3 +9,6 @@ if [[ ! -f "$WEIGHTS" ]]; then
 fi
 
 nosetests -v
+
+cd examples
+py ./finetune_semeval_class-avg_f1.py
